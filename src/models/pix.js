@@ -56,10 +56,20 @@ class Pix {
   async autoAcceptNextQueue() {
     let lookingForPop = true;
     log(italic('waiting for queue to pop...'))
-    rl.question(italic('hit enter to stop \n'), () => {
+    log(italic('hit enter to cancel'))
+
+    const stopSearch = () => {
       log(italic(`stopping search`), 1);
       lookingForPop = false;
-    });
+    }
+
+    const onLine = () => {
+      stopSearch();
+      rl.removeListener('line', onLine);
+    };
+
+    rl.on('line', onLine);
+
     while (lookingForPop) {
       const res = await createHttp1Request({
         method: 'GET',
@@ -69,7 +79,6 @@ class Pix {
       const searchState = JSON.parse(res._raw.toString()).searchState
       if (searchState === 'Found') {
         lookingForPop = false;
-        rl.pause();
         log(accent('queue popped, accepting!'))
         await delay(2000);
         await createHttp1Request({
@@ -77,9 +86,10 @@ class Pix {
           method: 'POST',
           url: '/lol-matchmaking/v1/ready-check/accept'
         }, this.leagueCredentials);
+        stopSearch();
+        rl.removeListener('line', onLine);
       }
     }
-
   }
 
   async dodgeChampSelect() {

@@ -64,6 +64,9 @@ async function MainMenu() {
       await AccountMenu(true);
       break;
     case '2':
+      // const cb = () => {
+      //   MainMenu();
+      // }
       await client.autoAcceptNextQueue();
       break;
     case '3':
