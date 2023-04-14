@@ -1,0 +1,10 @@
+# ignore ALL .log files
+*.log
+
+
+node_modules/
+jspm_packages/
+src/data/accounts.json
+
+
+.env
