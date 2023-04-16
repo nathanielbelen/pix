@@ -12,6 +12,7 @@ const accountNames = Object.keys(accounts);
 const client = new Pix();
 
 async function init() {
+  console.clear()
   await client.findLeagueClient()
   if (!client.leagueCredentials) {
     await client.findRiotClient(false)
