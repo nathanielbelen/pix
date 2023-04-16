@@ -11,5 +11,10 @@
   "dependencies": {
     "chalk": "4.1.2",
     "league-connect": "^6.0.0-rc12"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
   }
 }

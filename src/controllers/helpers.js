@@ -1,5 +1,7 @@
-function delay(t, v) {
-  return new Promise(resolve => setTimeout(resolve, t, v));
+function delay(t) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, t);
+  });
 }
 
-exports.delay = delay;
+module.exports.delay = delay;
