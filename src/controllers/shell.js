@@ -30,5 +30,4 @@ function killProcess(pid) {
   });
 }
 
-module.exports.spawnRiotPromise = spawnRiotPromise;
-module.exports.killProcess = killProcess;
+module.exports = { spawnRiotPromise, killProcess };

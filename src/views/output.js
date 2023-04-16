@@ -12,9 +12,4 @@ function log(string, level = 0) {
   return
 }
 
-module.exports.error = error;
-module.exports.warning = warning
-module.exports.bold = bold;
-module.exports.italic = italic;
-module.exports.accent = accent;
-module.exports.log = log;
+module.exports = { error, warning, bold, italic, accent, log }
